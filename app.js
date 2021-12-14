@@ -11,9 +11,13 @@ const pageController = require('./controllers/pageControllers');
 const app = express();
 
 //Connection to database
-mongoose.connect('mongodb://localhost/clean-blog-test-db', {
+mongoose.connect('mongodb+srv://aselcuktuncer:zsZPmriLbdNbi3x@cleanblog.acbbx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+}).then(() => {
+  console.log("DB is connected")
+}).catch((e)=> {
+  console.log(e)
 });
 
 //Template Engine
@@ -41,7 +45,8 @@ app.get('/about', pageController.getAboutPage);
 app.get('/add_post', pageController.getAddPage);
 app.get('/posts/edit/:id', pageController.getEditPage);
 
-const port = 3000;
+const port = process.env.PORT || 5000;
+//zsZPmriLbdNbi3x
 
 app.listen(port, () => {
   console.log(`App is running on port number: ${port}`);
