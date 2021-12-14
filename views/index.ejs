@@ -33,7 +33,7 @@
               <%= posts[i].title %>
             </h2>
             <h3 class="post-subtitle">
-              <%- posts[i].detail.substring(0,50); %>
+              <%- if(posts[i].detail.length > 100) {posts[i].detail.substring(0,100)}; else {posts[i].detail} %>
             </h3>
           </a>
           <p class="post-meta">Posted by
